@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Weather App </title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;display=swap'>
+  <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<section class="top-banner">
+  <div class="container">
+    <h1 class="heading"> Weather App</h1>
+    <form action = "/" method = "POST">
+      <input type="text" placeholder="Search for a city"  name ="city"  autofocus>
+      <button type="submit">SUBMIT</button>
+      <span class="msg"></span>
+    </form>
+  </div>
+</section>
+<section class="ajax-section">
+  <div class="container">
+    <ul class="cities"></ul>
+  </div>
+</section>
+<footer class="page-footer">
+    <small>Made with <span>❤</span> by <a href="http://georgemartsoukos.com/" target="_blank">Neeraj Saini</a>
+    </small>
+
+</footer>
+<!-- partial -->
+
+
+</body>
+</html>
