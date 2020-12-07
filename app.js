@@ -2,9 +2,20 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const https = require('https');
+const ejs = require('ejs');
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.set('view engine', 'ejs');
+
+
+var temprature ="";
+var logourl = "";
+var cityName = "";
+var description = "";
+var message="";
+
 
 function weatherFinder(city)
 {
@@ -17,19 +28,33 @@ function weatherFinder(city)
 
 app.post("/", function(req , res)
 {
-  var cityName  = req.body.city;
+   cityName  = req.body.city;
   https.get(weatherFinder(cityName), function(response)
   {
+    if(response.statusCode == 200)
+    {
     response.on("data", function(data)
     {
+      message="";
       var weatherData = JSON.parse(data);
+      temprature = weatherData.main.temp;
+      description = weatherData.weather[0].description;
       var icon = weatherData.weather[0].icon;
-      const imgUrl = "http://openweathermap.org/img/wn/"+icon+"@2x.png";
-      res.write("<h1>The temp is" +weatherData.main.temp +"</h1>");
-      res.write("<img src ="+ imgUrl +">");
+      logourl = "http://openweathermap.org/img/wn/"+icon+"@2x.png";
+      res.redirect("/");
 
+    });}
 
-    });
+    else {
+      temprature ="";
+      logourl = "";
+      cityName = "";
+      description ="";
+      message="Invalid Input Try again!!";
+
+      res.write("Invalid ");
+      res.send("/");
+    }
 
   });
 
@@ -37,7 +62,7 @@ app.post("/", function(req , res)
 
 app.get("/" , function(req , res)
 {
-  res.sendFile(__dirname + "/index.html");
+  res.render('index' , { currentTemprature : temprature , imageaddress : logourl,city : cityName, weatherDescription:description,warning : message});
 });
 
 app.listen(3000 , function(req , res)
