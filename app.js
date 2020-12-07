@@ -65,7 +65,7 @@ app.get("/" , function(req , res)
   res.render('index' , { currentTemprature : temprature , imageaddress : logourl,city : cityName, weatherDescription:description,warning : message});
 });
 
-app.listen(3000 , function(req , res)
+app.listen(process.env.PORT || 3000 , function(req,res)
 {
-  console.log("Server Started");
+  console.log("server started");
 });
