@@ -52,8 +52,7 @@ app.post("/", function(req , res)
       description ="";
       message="Invalid Input Try again!!";
 
-      res.write("Invalid ");
-      res.send("/");
+      res.redirect("/");
     }
 
   });
