@@ -1,12 +1,16 @@
-{
++{
   "name": "weatherfinder",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node server.js"*
   },
   "author": "Neeraj Saini",
+  "engines": {
+    "node" : "15.2.1"
+  },
   "license": "ISC",
   "dependencies": {
     "alert": "^5.0.6",
