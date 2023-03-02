@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const https = require('https');
 const ejs = require('ejs');
-const weather = require(__dirname + '/weatherFinder.js');
+// const weather = require(__dirname + '/weatherFinder.js');
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
